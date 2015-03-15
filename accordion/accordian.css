@@ -1,0 +1,28 @@
+.demo-accordian > li > div{
+    max-height: 0;
+    width:300px;
+    background-color:aquamarine;
+    overflow:hidden;
+    -webkit-transition: max-height .3s; 
+    -moz-transition: max-height .3s; 
+    -ms-transition: max-height .3s; 
+    -o-transition: max-height .3s; 
+    transition: max-height .3s; 
+
+}
+      
+.demo-accordian > li.open > div{
+    max-height: 400px;
+}
+      
+.demo-accordian > li{
+    
+    background-color:darkgrey;
+    width:300px;
+    font-size:120%;
+    
+}
+.demo-accordian > li.open{
+    background-color:aqua;
+    
+}

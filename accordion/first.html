@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    
+  <style>
+.accordian-toggle{
+    
+    background-color:darkgrey;
+    width:300px;
+    
+}
+.accordian-toggle:active {
+    background-color:aqua;
+}
+      
+.accordian-content{
+    max-height: 0;
+    width:300px;
+    background-color:aquamarine;
+    overflow:hidden;
+    -webkit-transition: max-height .3s; 
+    -moz-transition: max-height .3s; 
+    -ms-transition: max-height .3s; 
+    -o-transition: max-height .3s; 
+    transition: max-height .3s; 
+
+}
+      
+.accordian-toggle:active .accordian-content{
+    max-height: 400px;
+}
+      
+  </style>
+</head>
+<body>
+    
+    <ul>
+        <li class="accordian-toggle"><input type="checkbox" checked>
+            <div class="accordian-content">hey</div></li>
+        <li class="accordian-toggle">2<div class="accordian-content">hi</div></li>
+        <li class="accordian-toggle">3<div  class="accordian-content">sup</div></li>
+        <li class="accordian-toggle">4<div  class="accordian-content">yo</div></li>
+    </ul>
+    
+</body>
+</html>
