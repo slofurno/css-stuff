@@ -1,0 +1,62 @@
+ <!DOCTYPE html> 
+ <html>
+ <head>
+ <meta charset="utf-8">
+ <title>
+ </title>
+ <style>
+ .footer{
+        position: fixed;
+        width:100%;
+        bottom:0;
+        height:60px;
+        max-height: 60px;
+        margin-bot:-60px;
+        transform:translateY(60px);
+        -webkit-transition: transform .6s; 
+    -moz-transition: transform.6s; 
+    -ms-transition: transform .6s; 
+    -o-transition: transform .6s; 
+    transition: transform .6s; 
+    background-color:darkslategray;
+
+ }
+        
+
+</style>
+</head>
+<body>
+
+
+<div id="footer" class="footer">
+        footer
+        <br>
+        footer
+        <br>
+        etc
+        <Br>
+        dsfsd
+</div>
+<script>
+var el = document.getElementById("footer");
+
+var slideIn = function(){
+
+        el.style.webkitTransform = "translateX(0)";
+        el.style.MozTransform = "translateX(0)";
+        el.style.msTransform = "translateX(0)";
+        el.style.OTransform = "translateX(0)";
+        el.style.transform = "translateX(0)";
+};
+var slideOut = function(){
+
+        el.style.webkitTransform = "translateX(60px)";
+        el.style.MozTransform = "translateX(60px)";
+        el.style.msTransform = "translateX(60px)";
+        el.style.OTransform = "translateX(60px)";
+        el.style.transform = "translateX(60px)";
+};
+
+</script>
+</body>
+</html>
