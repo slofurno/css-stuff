@@ -18,8 +18,17 @@
     -ms-transition: transform .6s; 
     -o-transition: transform .6s; 
     transition: transform .6s; 
-    background-color:darkslategray;
+    background-color:lightslategray;
 
+ }
+ .alert-box{
+        width:60px;
+        overflow:hidden;
+        height:60px;
+        padding:2px;
+        background-color:azure;
+        border:1px solid lavender;
+        display:inline-block;
  }
         
 
@@ -29,32 +38,31 @@
 
 
 <div id="footer" class="footer">
-        footer
-        <br>
-        footer
-        <br>
-        etc
-        <Br>
-        dsfsd
+      <div class="alert-box">msg
+      </div>
+        <div class="alert-box">msg
+      </div>
+        <div class="alert-box">msg
+      </div>
 </div>
 <script>
 var el = document.getElementById("footer");
 
 var slideIn = function(){
 
-        el.style.webkitTransform = "translateX(0)";
-        el.style.MozTransform = "translateX(0)";
-        el.style.msTransform = "translateX(0)";
-        el.style.OTransform = "translateX(0)";
-        el.style.transform = "translateX(0)";
+        el.style.webkitTransform = "translate(0,0)";
+        el.style.MozTransform = "translate(0,0)";
+        el.style.msTransform = "translate(0,0)";
+        el.style.OTransform = "translate(0,0)";
+        el.style.transform = "translate(0,0)";
 };
 var slideOut = function(){
 
-        el.style.webkitTransform = "translateX(60px)";
-        el.style.MozTransform = "translateX(60px)";
-        el.style.msTransform = "translateX(60px)";
-        el.style.OTransform = "translateX(60px)";
-        el.style.transform = "translateX(60px)";
+        el.style.webkitTransform = "translate(0,60px)";
+        el.style.MozTransform = "translate(0,60px)";
+        el.style.msTransform = "translate(0,60px)";
+        el.style.OTransform = "translate(0,60px)";
+        el.style.transform = "translate(0,60px)";
 };
 
 </script>
