@@ -1,0 +1,122 @@
+ <!DOCTYPE html> 
+ <html>
+ <head>
+ <meta charset="utf-8">
+ <title>
+ </title>
+ <style>
+ .footer{
+        position: fixed;
+        width:100%;
+        bottom:0;
+        height:60px;
+        max-height: 60px;
+        transform:translateY(60px);
+        -webkit-transition: transform .6s; 
+    -moz-transition: transform.6s; 
+    -ms-transition: transform .6s; 
+    -o-transition: transform .6s; 
+    transition: transform .6s; 
+    
+
+ }
+ .footer > div{
+        width:300px;
+        overflow:hidden;
+        height:50px;
+        padding:0px;
+        background-color:lightgray;
+        display:inline-block;
+        z-index: 5;
+        opacity: :1;
+        position: absolute;
+        left:0;
+        border-left:4px solid dodgerblue;
+       
+        transform:translateY(0);
+    -webkit-transition: transform .3s; 
+    -moz-transition: transform.3s; 
+    -ms-transition: transform .3s; 
+    -o-transition: transform .3s; 
+    transition: transform .3s; 
+
+
+ }
+.footer > div:nth-child(2) {
+    z-index: 4;
+    transform:translateY(10px);
+} 
+.footer > div:nth-child(3) {
+    z-index: 3;
+    transform:translateY(20px);
+} 
+.footer > div:nth-child(4) {
+    z-index: 2;
+    transform:translateY(30px);
+} 
+
+ .footer > div.going-out{
+    opacity: 0;
+
+ }
+        
+
+</style>
+</head>
+<body>
+
+
+<div id="footer" class="footer">
+</div>
+<script>
+var footer = document.getElementById("footer");
+
+var slideIn = function(el){
+
+        el.style.webkitTransform = "translate(0,0)";
+        el.style.MozTransform = "translate(0,0)";
+        el.style.msTransform = "translate(0,0)";
+        el.style.OTransform = "translate(0,0)";
+        el.style.transform = "translate(0,0)";
+};
+var slideOut = function(el){
+
+        el.style.webkitTransform = "translate(0,60px)";
+        el.style.MozTransform = "translate(0,60px)";
+        el.style.msTransform = "translate(0,60px)";
+        el.style.OTransform = "translate(0,60px)";
+        el.style.transform = "translate(0,60px)";
+};
+
+var alerts = [];
+
+var StartLeaving = function(){
+
+}
+
+var Shift=function(){
+    var el = alerts.shift();
+    footer.removeChild(el);
+    if (alerts.length==0){
+       // slideOut(footer);
+    }
+}
+
+var Push=function(msg){
+    var el = document.createElement("div"); 
+    var newContent = document.createTextNode(msg); 
+    el.appendChild(newContent);
+    console.log(el);
+    footer.appendChild(el);
+    alerts.push(el);
+    setTimeout(Shift,4000);
+    if (alerts.length==1){
+        slideIn(footer);
+    }
+}
+
+
+
+</script>
+</body>
+</html>

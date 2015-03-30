@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+
+  <style>
+
+body{
+  background-color:#D5DCE7;
+}
+
+.table{
+  margin-top:2px;
+  color:#7689A9;
+}
+
+.table .row{
+  height:auto;
+  width:100%;
+  margin: 2px 0 2px 0;
+  padding: 10px 0px 10px 0px;
+  display:block;
+
+}
+.row-left, .row-right{
+  display:inline-block;
+}
+.table .row:nth-child(odd){
+  background-color:#F4F5F9;
+
+}
+.table .row:nth-child(even){
+  background-color:#F4F5F9;
+
+}
+.row span{
+  margin-right:10px;
+
+}
+
+    
+.sub-span{
+ font-size:80%; 
+  display:block;
+}
+.did-not{
+ color: #D5DCE7;
+  
+}
+
+  </style>
+</head>
+<body>
+  <br>
+  <br>
+  <br>
+<div style="width:240px; position:fixed; background-color:#F4F5F9; padding:15px 15px 15px 15px; color: #7689A9; left:900px;">
+  <div style="width:100%; height:100%; background-color:#D5DCE7;" >
+<div style="background-color:#F4F5F9; padding-bottom:10px; margin-bottom:2px; line-height:200%">
+
+<div class="form-group">
+    <label for="distAmount">Amount</label>
+    <input type="text" class="form-control" id="distAmount" placeholder="Amount">
+</div>
+
+<div class="radio">
+  <label>
+    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+    Distribute amount evenly
+  </label>
+</div>
+<div class="radio">
+  <label>
+    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+    Distribute amount to each
+  </label>
+</div>
+
+<button type="button" class="btn btn-primary">Distribute</button>
+
+</div>
+  </div>
+  </div>
+
+<div style="width:240px; position:fixed; background-color:#F4F5F9; padding:15px 15px 15px 15px; color: #7689A9">
+  <div style="width:100%; height:100%; background-color:#D5DCE7;" >
+<div style="background-color:#F4F5F9; padding-bottom:10px; margin-bottom:2px; line-height:200%">
+  <span  style="overflow-x:hidden; white-space:nowrap;">Some Pharmeceutical Event Name</span>
+  Philadelphia, PA<br>
+  4/20/2015<br>
+  </div>
+
+   
+<div style="background-color:#F4F5F9; padding:15px 0 10px 0;margin-bottom:2px; ">
+  
+<span>Registrants</span><span style="background-color:#D5DCE7; padding:2px 5px 2px 5px; float:right;">102</span><br><br>
+  <span>Transactions</span><span style="background-color:#D5DCE7; padding:2px 5px 2px 5px; float:right;">4</span><br> 
+  
+  
+  </div> 
+
+<div style="background-color:#F4F5F9; padding:15px 0 10px 0;margin-bottom:2px; ">
+<span>New transaction 1</span><br><br>
+<span>Airfare</span><br><br>
+<span>Recipients</span><span style="background-color:#D5DCE7; padding:2px 5px 2px 5px; float:right;">102</span><br><br>
+  <span>Total Amount</span><span style="background-color:#D5DCE7; padding:2px 5px 2px 5px; float:right;">$15,000</span><br> 
+  
+  
+  </div> 
+    
+
+
+    
+  </div>
+  </div>
+<div class="container" style="width:900px; margin-left:0px; padding-left:300px;">
+  
+  <div class="row">
+    
+ <div class="col-xs-9" style="background-color:#D5DCE7">
+   
+   <div style="width:524px;">
+     <div style="background-color:#F4F5F9; padding:10px 5px 5px 5px">
+    <div class="input-group" >
+      <input type="text" class="form-control" data-bind="textInput:searchFilter" placeholder="Search for...">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+     
+    </div>
+     
+     <div  style="background-color:#F4F5F9">
+      <button type="button" data-bind="click:toggleFilters">Filters</button>
+     </div>
+     
+     <div class="filter-dropdown row" data-bind="visible:areFiltersVisible">
+      <div class="col-xs-3" style="padding:10px 10px 10px 25px; font-size:80%">
+        <span>Role</span><br>
+        <A href="#">Attendee</A><br>
+        <A href="#">Speaker</A><br>
+        
+       </div>
+
+       <div class="col-xs-3" style="padding:10px 10px 10px 25px; font-size:80%">
+         <span>Status</span><br>
+         <A href="#">attended</a><br>
+         <A href="#">did not attend</A><br>
+         <A href="#">consumed</A><br>
+       </div>
+
+       <div class="col-xs-3">
+         333
+       </div>
+       </div>
+     </div>
+      <div class="table" data-bind="foreach: recipients" >
+        <div class="row" data-bind="click: $parent.selectRow, visible: isVisible">
+          <div class="col-xs-1" style="font-size:24px">
+          <span class ="glyphicon glyphicon-ok" data-bind="css: { 'did-not': !isSelected()}"></span>
+          </div>
+          <div class="col-xs-4">
+              <span class="name"  style="overflow-x:visible; white-space:nowrap;" data-bind="text: Name"></span>
+              <span class="role sub-span" data-bind="text: RegistrantRole"></span>
+              <span class="created sub-span" data-bind="text: $parent.getElapsed(DateCreated)"></span>
+          </div>
+          <div class="col-xs-4" style="color:#7689A9">
+              <span class="glyphicon glyphicon-user" data-bind="css: { 'did-not': !didAttend}"></span>
+              <span class="glyphicon glyphicon-cutlery" data-bind="css: { 'did-not': !didConsume}"></span>
+              <span class="glyphicon glyphicon-eye-open" data-bind="css: { 'did-not': !didHCP}"></span>
+             <span class="npi">1321423423</span>
+          </div>
+          <div class="col-xs-2">
+            <span style="background-color:#D5DCE7; padding:2px 5px 2px 5px;">$15,000</span>
+
+          </div>
+        </div>
+      </div>
+   </div>
+  </div>
+</div>
+
+  </div>
+  <script src="actors.js"></script>
+  <script src="js/jquery-2.1.3.min.js"></script>
+  <script src="js/knockout-3.3.0.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  
+  <script>
+  
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min)) + min;
+    }
+    
+    var maxindex = json.length;
+    
+    var temp = [];
+    var set = [];
+    
+    for(var i = 0;i<500;i++){
+      var index = getRandomInt(0,maxindex);
+      
+      if (set[index] === 1){
+      }
+      else{
+        set[index]=1;
+        temp.push(json[index]);
+      }
+    }
+
+    var RecipientViewModel = function(rec){
+      this.rec = rec;
+      this.isSelected = ko.observable(false);
+    };
+    
+    var recipients = temp.map(function(rec){
+      
+      rec.DateCreated = new Date(Date.parse(rec.DateCreated));
+      rec.Name = rec.First + " " + rec.Last;
+      rec.isSelected = ko.observable(false);
+      rec.isVisible = ko.observable(true);
+      rec.searchkeys = rec.Name.toLowerCase() + "|" + rec.RegistrantRole.toLowerCase() + "|" + rec.RegistrantType.toLowerCase();
+      return rec;
+      
+    });
+    
+    console.log(recipients);
+    
+    var ViewModel = function(rec){
+      
+      var msperday = 86400000;
+      var msperhour = 3600000;
+      
+      var self = this;
+      var datenow = Date.now();
+      
+      this.areFiltersVisible = ko.observable(false);
+      this.recipients = ko.observableArray(rec);
+      this.searchFilter = ko.observable("");
+      
+      this.getElapsed = function(date){
+        
+        var el = datenow - date;
+        var days = el/msperday | 0;
+        var hours = el/msperhour | 0;
+        if (days>0){
+          return "about " + days + " days ago";
+        }
+        else{
+           return "about " + hours + " hours ago";
+        }
+        
+      };
+      var t1 = performance.now();
+      
+      this.filteredRows = ko.computed(function() {
+        var t2 = performance.now();
+        console.log(t2-t1);
+        t1=t2;
+        
+        var filter = self.searchFilter().toLowerCase();
+        var recipients = self.recipients();
+        console.log(recipients);
+        
+        if (filter.length > 2) {
+          
+           recipients.forEach(function(row){
+             if (row.searchkeys.indexOf(filter)>=0){
+               row.isVisible(true);
+             }
+             else{
+               row.isVisible(false);
+             }
+          });
+          /*
+          var results = self.recipients().filter(function(rec){
+            return rec.searchkeys.indexOf(filter)>=0;
+          });
+          */
+        }
+        else{
+          
+           self.recipients().forEach(function(row){
+            row.isVisible(true);
+          });
+          
+        }
+        
+        
+       
+        return self.recipients();
+        
+    }, this);
+      
+      this.selectRow = function(item,event){
+        event.preventDefault();
+        console.log(item);
+        item.isSelected(!item.isSelected());
+      };
+      
+      this.toggleFilters = function(e){
+        self.areFiltersVisible(!self.areFiltersVisible());
+      };
+      
+    };
+    
+    var vm = new ViewModel(recipients);
+    
+    ko.applyBindings(vm);
+    
+    
+  </script>
+  
+</body>
+</html>
