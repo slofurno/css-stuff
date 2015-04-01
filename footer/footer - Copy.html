@@ -1,0 +1,243 @@
+ <!DOCTYPE html> 
+ <html>
+ <head>
+ <meta charset="utf-8">
+ <title>
+ </title>
+ <style>
+ .footer{
+        position: fixed;
+        width:300px;
+        bottom:0;
+        left:20px;
+        
+        max-height: 0px;
+        vertical-align:top;
+     
+
+        -webkit-transition: max-height .4s; 
+    -moz-transition: max-height .4s; 
+    -ms-transition: max-height .4s; 
+    -o-transition: max-height .4s; 
+    transition: max-height .4s; 
+    
+
+ }
+ .footer.occupied{
+    max-height:60px;
+ }
+
+
+ .footer:hover{
+    max-height:200px !important;
+ }
+ .footer .alert{
+        width:280px;
+        overflow:hidden;
+        height:50px;
+        padding-left:30px;
+        background-color:lightgray;
+        display:block;
+      
+        z-index: 5;
+        opacity: :1;
+        position: relative;
+        left:0;
+        border-right:4px solid dodgerblue;
+       
+
+
+
+ }
+  .footer .alert:nth-child(2){
+    margin-bottom:10px;
+ }
+ .footer:hover > .ffalert{
+    margin-bottom:0;
+ }
+
+.footer:hover .alert:nth-child(5) {
+    z-index: 4;
+    transform:translateY(-10px);
+} 
+.footer:hover .alert:nth-child(3) {
+    z-index: 3;
+    transform:translateY(-10px);
+} 
+.footer:hover .alert:nth-child(4) {
+    z-index: 2;
+    transform:translateY(-10px);
+} 
+
+.footer:hover #leftFooter{
+    visibility: hidden;
+}
+
+        
+
+</style>
+</head>
+<body>
+
+<script>
+"use strict";
+
+var Linked = function(){
+"use strict";
+
+  var self = this;
+  var _head = null;
+  var _lookup = [];
+  var _length = 0;
+
+  var Node = function(){
+    this.next = null;
+    this.prev = null;
+    this.data = null;
+  };
+
+  var push = function(data,key){
+    var n = new Node();
+    n.data = data;
+    n.next = _head;
+    if (_head!=null){
+      _head.prev = n;
+    }
+    _head = n;
+    var old = _lookup[key];
+    if (old === undefined){
+      _length++;
+    }
+    _lookup[key] = n;
+
+  };
+
+  var remove = function(key){
+
+    var node = _lookup[key];
+    if (node === undefined){
+      return undefined;
+    }
+
+    var prev = node.prev;
+    var next = node.next;
+    if (prev !=null){
+      prev.next = next;
+    }
+    else{
+      _head = next;
+    }
+
+    if (next!=null){
+      next.prev = prev;
+    }
+
+    _lookup[key] = undefined;
+    _length--;
+    return node;
+  };
+
+  var count = function(){
+    return _length;
+  };
+
+  var forEach = function(delegate){
+    var cur = _head;
+
+    while (cur!=null){
+      delegate(cur.data);
+      cur = cur.next;
+    }
+
+
+  };
+
+  return {push:push, remove:remove, count:count, forEach:forEach};
+
+};
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+var sparsearray = [];
+var pushedarray = [];
+var lookup = [];
+var linked = new Linked();
+
+
+for (var i = 0;i<10000;i++){
+  var id = getRandomInt(0,50);
+ sparsearray[i] = {a:"hey", b:i, c:id}; 
+ var toadd = {a:"hey", b:i, c:id};
+ linked.push(toadd, i);
+ pushedarray.push(toadd);
+ lookup[i] = toadd;
+}
+
+
+var t1 = performance.now();
+
+for(var i = 0;i<90;i++){
+
+ var sum = 0;
+  pushedarray.forEach(function(el){
+    sum+=el.c;
+  });
+  console.log(sum);
+
+
+  //var item = lookup[i];
+  //var index = pushedarray.indexOf(item);
+
+
+  //var rem = pushedarray.splice(index,1);
+
+}
+
+//console.log(pushedarray);
+/*
+for(var i = 0;i<10;i++){
+  var total = 0;
+  var val;
+  for (val in sparsearray){
+    if(sparsearray.hasOwnProperty(val)){
+      total+= sparsearray[val].b;
+    }
+    
+  }
+  //var amt = sparsearray.reduce(function(agg,cur){return agg+cur.b;},0);
+  console.log("sparse", amt);
+}
+*/
+
+
+var t2 = performance.now();
+/*
+for(var i = 0;i<100;i++){
+  var amt = pushedarray.reduce(function(agg,cur){return agg+cur.b;},0);
+    console.log("pushed", amt);
+}
+*/
+console.log(linked.count());
+for(var i = 0;i<90;i++){
+  var sum = 0;
+  linked.forEach(function(el){
+    sum+=el.c;
+  });
+  console.log(sum);
+  //var len = pushedarray.length;
+  //var id = getRandomInt(0,len);
+  //var rem2 = linked.remove(i);
+}
+
+
+var t3 = performance.now();
+
+console.log(t3-t2, "linked");
+console.log(t2-t1, "array+lookup");
+
+
+</script>
+</body>
+</html>
